@@ -228,7 +228,7 @@ class Buttons extends React.Component {
                     id="subtract"
                     onClick={this.props.operators}
                     style={operatorStyle}
-                    value="."
+                    value="-"
                     >
                     -
                 </button>
@@ -243,7 +243,7 @@ class Buttons extends React.Component {
                 </button>
                 <button
                     id="add"
-                    onClick={this.props.numbers}
+                    onClick={this.props.operators}
                     value="+"
                     style={operatorStyle}
                     >
