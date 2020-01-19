@@ -105,10 +105,10 @@ class App extends React.Component {
                   ? value : currentVal + value,
                   formula:
                     currentVal === "0" && value === "0"
-                        ? formula: "" ? value : formula
+                        ? formula === "" ? value : formula
                         : /([^.0-9]0|^0)$/.test(formula)
-                        ? formula.slice(0,-1) + value
-                        : formula + value
+                         ? formula.slice(0,-1) + value
+                         : formula + value
               });
           }
       }
@@ -148,9 +148,19 @@ class App extends React.Component {
     render() {
       return(
           <div className="calculator">
-              <Formula />
-              <Output />
-              <Buttons />
+              <Formula
+              formula={this.state.formula.replace(/x/g, ".")}
+              />
+              <Output
+              currentVal={this.state.currentVal}
+              />
+              <Buttons
+              decimal={this.handleDecimal}
+              evaluate={this.handleEvaluate}
+              initialize={this.initialize}
+              numbers={this.handleNumbers}
+              operators={this.handleOperators}
+              />
           <p>Hello World</p>
       </div>
       );
@@ -188,6 +198,22 @@ class Buttons extends React.Component {
                     style={clearStyle}
                     value="AC"
                     >AC</button>
+                <button
+                    id="multiply"
+                    onClick={this.props.operators}
+                    style={operatorStyle}
+                    value="x"
+                    >
+                    x
+                </button>
+                <button
+                    id="divide"
+                    onClick={this.props.operators}
+                    style={operatorStyle}
+                    value="/"
+                    >
+                    /
+                </button>
             </div>
         );
     }
